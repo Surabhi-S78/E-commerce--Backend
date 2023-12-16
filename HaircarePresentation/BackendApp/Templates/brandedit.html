@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+                  <h4 class="card-title">Brand</h4>
+                  <p class="card-description">
+                  Categories
+                  </p>
+                  <form class="forms-sample" method="post" action="{% url 'brand_update' dataid=brande.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="BrandName" name="name" value="{{brande.hairbrand_name}}">
+                    </div>
+
+                      <div >
+                          <img src="{{brande.hairbrand_img.url}}" width="350px" height="150px">
+                      <input type="file"  name="brandImage">
+                       </div>
+
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Upadate</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+                  <h4 class="card-title">Add Product</h4>
+                  <p class="card-description">
+
+                  </p>
+                  <form class="forms-sample" method="post" action="{% url 'product_data' %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                     <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="col-sm-3 col-form-label">HairType</label>
+                          <div class="col-sm-12">
+                            <select class="form-control" name="hairtypename" >
+                              <option>Select Hairtype</option>
+                                {% for  i in hairty %}
+                              <option>{{i.Hair_name}}</option>
+                                 {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                          <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="col-sm-3 col-form-label">Hairproblem</label>
+                          <div class="col-sm-12">
+                            <select class="form-control" name="hairproblemname">
+                              <option>Select Hairproblem</option>
+                                {% for  i in hairpr %}
+                              <option>{{i.hair_prblm}}</option>
+                                 {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="col-sm-3 col-form-label">Hairproducts</label>
+                          <div class="col-sm-12">
+                            <select class="form-control" name="hairproductname">
+                              <option>Select Producttype</option>
+                                {% for  i in hairpro %}
+                              <option>{{i.product_name}}</option>
+                                 {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="col-sm-3 col-form-label">Brand</label>
+                          <div class="col-sm-12">
+                            <select class="form-control" name="brandname">
+                              <option>Select Category</option>
+                                {% for  i in brand %}
+                              <option>{{i.hairbrand_name}}</option>
+                                 {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+                    <div class="form-group">
+                      <label for="exampleInputName1">Product Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="productname">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Description</label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="4" name="desription"></textarea>
+                    </div>
+
+
+
+                    <div class="form-group">
+                      <label for="exampleInputCity1">Prize</label>
+                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Prize" name="prize">
+                    </div>
+                   <div class="form-group">
+                       <input type="file" placeholder="image" name="productimage">
+                   </div>
+
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+ {% for i in  messages %}
+  {% if i.tags == 'warning' %}
+    <script>
+        swal('{{i}}','','warning')
+    </script>
+      {% elif i.tags == 'error' %}
+     <script>
+         swal('{{i}}','','error')
+     </script>
+          {% elif i.tags == 'success' %}
+            <script>
+                swal('{{i}}','','success')
+            </script>
+              {% else %}
+                    <script>
+                        swal('{{i}}','','info')
+                    </script>
+           {% endif %}
+         {% endfor %}
+        {% endif %}
+
+
+</body>
+</html>
+
+{% endblock %}

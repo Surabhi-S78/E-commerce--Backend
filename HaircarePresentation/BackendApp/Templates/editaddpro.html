@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+                  <h4 class="card-title">Add Product</h4>
+                  <p class="card-description">
+
+                  </p>
+                  <form class="forms-sample" method="post" action="{% url 'addpro_update'  dataid=add.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                     <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="col-sm-3 col-form-label">HairType</label>
+                          <div class="col-sm-12">
+                            <select class="form-control" name="hairtypename" value="{{add.Hair_name}}">
+
+                                <option>Straight-Hair</option>
+                                <option>Wavy-hair</option>
+                                <option>Curly-hair</option>
+                                <option>Coil-hair</option>
+
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                          <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="col-sm-3 col-form-label">Hairproblem</label>
+                          <div class="col-sm-12">
+                            <select class="form-control" name="hairproblemname"  value="{{add.Problem_name }}" >
+
+
+                              <option>Dry Hair and frizzy Hair</option>
+                                <option>Damaged hair</option>
+                                <option>Dandruff</option>
+                                <option>Dull hair</option>
+                                <option>Hair Loss</option>
+                                <option>Oily scalp</option>
+
+
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="col-sm-3 col-form-label">Hairproducts</label>
+                          <div class="col-sm-12">
+                            <select class="form-control" name="hairproductname" value="{{add.Producttype_name }}">
+
+
+                              <option>Shampoo</option>
+                                <option>Conditioner</option>
+                                <option>Shampoo&Conditioner Combo</option>
+                                <option>Hair Mask</option>
+                                <option>Hair Serum</option>
+                                <option>Hair Oil</option>
+
+
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                      <div class="col-md-6">
+                        <div class="form-group ">
+                          <label class="col-sm-3 col-form-label">Brand</label>
+                          <div class="col-sm-12">
+                            <select class="form-control" name="brandname" value="{{add.Brand_name}}">
+
+
+                              <option>L'Orel Prise</option>
+                                <option>Mamaearth</option>
+                                <option>Khadi Natural</option>
+                                <option>Fix My Curls</option>
+                                <option>Matrix</option>
+                                <option>Wow</option>
+                                <option>BBLUNT</option>
+                                <option>Curl Up</option>
+                                <option>TERESemme</option>
+
+
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+
+                    <div class="form-group">
+                      <label for="exampleInputName1">Product Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="productname" value="{{add.Product_name}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Description</label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="4" name="desription">{{add.Product_des}}</textarea>
+                    </div>
+
+
+
+                    <div class="form-group">
+                      <label for="exampleInputCity1">Prize</label>
+                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Prize" name="prize" value="{{add.Prize}}">
+                    </div>
+                   <div class="form-group">
+                       <img src="{{add.Image.url}}" width="200px">
+                       <input type="file" placeholder="image" name="productimage">
+                   </div>
+
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+</body>
+</html>
+
+{% endblock %}

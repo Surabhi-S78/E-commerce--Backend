@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+                  <h4 class="card-title">Product_type categories</h4>
+                  <p class="card-description">
+                  product_type
+                  </p>
+                  <form class="forms-sample" method="post" action="{% url 'producttype_update' dataid=data.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Producttype" name="name" value="{{data.product_name}}" >
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Descripation </label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="4" name="description">{{data.product_des}}</textarea>
+                    </div>
+                      <div >
+                          <img src="{{data.Product_img.url}}" width="200px">
+                      <input type="file"  name="ProducttypeImage">
+                       </div>
+
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+</body>
+</html>
+
+{% endblock %}

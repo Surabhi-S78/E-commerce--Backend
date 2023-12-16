@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+                  <h4 class="card-title">Hairtype categories</h4>
+                  <p class="card-description">
+                  Categories
+                  </p>
+                  <form class="forms-sample" method="post" action="{% url 'hairupdate'  dataid=hairt.id %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Hairtype" name="name"  value="{{hairt.Hair_name}}">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleTextarea1">Descripation </label>
+                      <textarea class="form-control" id="exampleTextarea1" rows="4" name="description">{{hairt.Hair_des}}</textarea>
+                    </div>
+                      <div>
+                      <img src="{{hairt.Hair_image.url}}" width="200px" >
+                      <input type="file"  name="HairtypeImage">
+                       </div>
+
+
+
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+</body>
+</html>
+
+{% endblock %}
