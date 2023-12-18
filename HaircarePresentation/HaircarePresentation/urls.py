@@ -16,12 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 import BackendApp.urls
+import FrontendApp.urls
+
+
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns,static
 from HaircarePresentation import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('BackendApp/',include(BackendApp.urls))
+    path('BackendApp/',include(BackendApp.urls)),
+    path('FrontendApp/',include(FrontendApp.urls))
+
 ]
 
 
